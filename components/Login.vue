@@ -5,12 +5,12 @@
 
       <div class="form-group">
         <label>Email address</label>
-        <input type="email" class="form-control form-control-lg">
+        <input v-model="email" type="email" class="form-control form-control-lg">
       </div>
 
       <div class="form-group">
         <label>Password</label>
-        <input type="password" class="form-control form-control-lg">
+        <input v-model="password" type="password" class="form-control form-control-lg">
       </div>
 
       <button type="submit" class="btn btn-dark btn-lg btn-block">Sign In</button>
@@ -45,24 +45,15 @@
 export default {
     data() {
         return {
-            input: {
-                username: "",
+           
+                email: "",
                 password: ""
-            }
+           
         }
     },
     methods: {
             login() {
-                if(this.input.username != "" && this.input.password != "") {
-                    if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
-                        this.$emit("authenticated", true);
-                        this.$router.replace({ name: "secure" });
-                    } else {
-                        console.log("The username and / or password is incorrect");
-                    }
-                } else {
-                    console.log("A username and password must be present");
-                }
+              
             }
         }
 }
