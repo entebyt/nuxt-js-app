@@ -1,44 +1,37 @@
 <template>
-  <div class="vue-tempalte">
-    <form @submit="login">
-      <h3>Sign In</h3>
-
-      <div class="form-group">
-        <label>Email address</label>
-        <input v-model="email" type="email" class="form-control form-control-lg">
-      </div>
-
-      <div class="form-group">
-        <label>Password</label>
-        <input v-model="password" type="password" class="form-control form-control-lg">
-      </div>
-
-      <button type="submit" class="btn btn-dark btn-lg btn-block">Sign In</button>
-
-      <p class="forgot-password text-right mt-2 mb-4">
-        <router-link to="/forgot-password">Forgot password ?</router-link>
-      </p>
-
-      <div class="social-icons">
-        <ul>
-          <li>
-            <a href="#">
-              <i class="fa fa-google"></i>
+  <div class="auth-body">
+    <div class="auth-container">
+      <div class="auth-form-container sign-in-container">
+        <form @submit="login">
+          <h1>Sign in</h1>
+          <div class="social-container">
+            <a href="#" class="social">
+              <i class="fab fa-facebook-f"></i>
             </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-facebook"></i>
+            <a href="#" class="social">
+              <i class="fab fa-google-plus-g"></i>
             </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-twitter"></i>
+            <a href="#" class="social">
+              <i class="fab fa-linkedin-in"></i>
             </a>
-          </li>
-        </ul>
+          </div>
+          <span>or use your account</span>
+          <input v-model="email" type="email" required placeholder="Email">
+          <input v-model="password" type="password" required placeholder="Password">
+          <a href="#">Forgot your password?</a>
+          <button type="submit">Sign In</button>
+        </form>
       </div>
-    </form>
+      <div class="overlay-container">
+        <div class="auth-overlay">
+          <div class="overlay-panel overlay-right">
+            <h1>Welcome Back!</h1>
+            <p>To keep connected with us please login with your personal info</p>
+            <button @click="moveToSignup" class="ghost">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -52,8 +45,11 @@ export default {
         }
     },
     methods: {
-            login() {
-              
+            login(e) {
+              e.preventDefault()
+            },
+            moveToSignup(){
+              this.$router.push('/signup')
             }
         }
 }

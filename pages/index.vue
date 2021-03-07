@@ -1,15 +1,17 @@
 <template>
   <div>
-    <Navbar/>
+    <!-- <Navbar/> -->
+    <Home/>
   </div>
 </template>
 
-<script lang="ts" >
+<script>
 import Vue from 'vue'
-import Navbar from '../components/Navbar'
+// import Navbar from '../components/Navbar'
+import Home from '../components/Home'
 export default Vue.extend({
   components: {
-    Navbar,
+    // Navbar,
   },
 })
 </script>
