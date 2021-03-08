@@ -17,8 +17,8 @@
           </div>
           <span>or use your account</span>
           <input type="text" required placeholder="Name">
-          <input type="email" required placeholder="Email">
-          <input type="password" required placeholder="Password">
+          <input type="email" required v-model="email" placeholder="Email">
+          <input type="password" v-model="password" required placeholder="Password">
           <button type="submit">Sign up</button>
         </form>
       </div>
@@ -43,13 +43,21 @@ export default {
       }
     },
     methods:{
-      signup(e){
-
+      async signup(e){
         e.preventDefault();
+        try{  const response = await this.$axios.$post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCUkSkp622YD3aobBiD1GHutvf8LDLt34A',{email:this.email,password:this.password})
+        if(response.status===200){
+ this.$router.push('/')
+        }
+        }
+        catch{
+
+        }}
+
       },
       moveToSignin(){
         this.$router.push('/login')
       }
     }
-}
+
 </script>
