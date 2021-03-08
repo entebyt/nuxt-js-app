@@ -46,18 +46,19 @@ export default {
       async signup(e){
         e.preventDefault();
         try{  const response = await this.$axios.$post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCUkSkp622YD3aobBiD1GHutvf8LDLt34A',{email:this.email,password:this.password})
-        if(response.status===200){
+        console.log(response)
+        if(response.idToken){
  this.$router.push('/')
         }
         }
         catch{
 
         }}
-
-      },
-      moveToSignin(){
+        ,moveToSignin(){
         this.$router.push('/login')
       }
+      },
+      
     }
 
 </script>
