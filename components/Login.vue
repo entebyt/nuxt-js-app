@@ -2,7 +2,7 @@
   <div class="auth-body">
     <div class="auth-container">
       <div class="auth-form-container sign-in-container">
-        <form @submit="login">
+        <form @submit="loginMethod">
           <h1>Sign in</h1>
           <div class="social-container">
             <a href="#" class="social">
@@ -35,6 +35,7 @@
   </div>
 </template>
 <script>
+import { login } from '../services/auth'
 export default {
     data() {
         return {
@@ -45,8 +46,14 @@ export default {
         }
     },
     methods: {
-            login(e) {
-              e.preventDefault()
+            async loginMethod(e) {
+                e.preventDefault();
+            const response = await login(this.email,this.password)
+            if(response.status===200){
+              this.$router.push('/')
+            }
+            console.log(response)
+            
             },
             moveToSignup(){
               this.$router.push('/signup')

@@ -2,7 +2,7 @@
   <div class="auth-body">
     <div class="auth-container">
       <div class="auth-form-container sign-in-container">
-        <form @submit="signup">
+        <form @submit="signupMethod">
           <h1>Sign up</h1>
           <div class="social-container">
             <a href="#" class="social">
@@ -35,6 +35,7 @@
   </div>
 </template>
 <script>
+import {signup} from '../services/auth'
 export default {
     data(){
         return {
@@ -43,11 +44,11 @@ export default {
       }
     },
     methods:{
-      async signup(e){
+      async signupMethod(e){
         e.preventDefault();
-        try{  const response = await this.$axios.$post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCUkSkp622YD3aobBiD1GHutvf8LDLt34A',{email:this.email,password:this.password})
+        try{  const response = await signup(this.email,this.password,this.$axios)
         console.log(response)
-        if(response.idToken){
+        if(response.status===200){
  this.$router.push('/')
         }
         }
