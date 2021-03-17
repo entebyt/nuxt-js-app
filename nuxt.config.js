@@ -29,7 +29,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/fontawesome', '@nuxtjs/axios'],
+  modules: ['@nuxtjs/fontawesome', '@nuxtjs/axios', '@nuxt/http'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
